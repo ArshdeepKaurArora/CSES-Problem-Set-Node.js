@@ -1,6 +1,13 @@
+// Your task is to divide the numbers 1,2,\ldots,n into two sets of equal sum.
+// Input: The only input line contains an integer n.
+// Output: Print "YES", if the division is possible, and "NO" otherwise.
+// After this, if the division is possible, print an example of how to create the sets. 
+// First, print the number of elements in the first set followed by the elements 
+// themselves in a separate line, and then, print the second set in a similar way.
+
 readline = require("readline");
 
-const r1 =readline.createInstance({
+const r1 =readline.createInterface({
     input: process.stdin,
     output: process.stdout
 })
@@ -17,7 +24,7 @@ r1.on('line', (line) => {
 
 function twoSets(lines) {
     let num = Number(lines[0]);
-    let checkDivision = num (1+num)/2;
+    let checkDivision = num*(1+num)/2;
     if (checkDivision % 2 != 0) {
         console.log("NO");
     } else {
@@ -26,7 +33,7 @@ function twoSets(lines) {
         let set2 = [];
         let divisionSum = checkDivision / 2;
         for (let i = num; i > 0; i--) {
-            if (i < divisionSum) {
+            if (i <= divisionSum) {
                 set1.push(i);
                 divisionSum -= i;
             } else {
